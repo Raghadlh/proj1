@@ -1,0 +1,14 @@
+# Use official PostgreSQL image
+FROM postgres:13
+
+# Set environment variables
+ENV POSTGRES_DB=wakeb_db
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=root
+ENV POSTGRES_SERVER=
+
+# Copy initialization scripts
+COPY init-scripts/ /docker-entrypoint-initdb.d/
+
+# Expose PostgreSQL port
+EXPOSE 5432

@@ -22,7 +22,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./target/myapp.war:/usr/local/tomcat/webapps/myapp.war
+      - ./target/proj1-1.0.0-SNAPSHOT.war:/usr/local/tomcat/webapps/proj1.war
     environment:
       POSTGRES_DB: wakeb_db
       POSTGRES_USER: wakeb_usr

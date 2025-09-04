@@ -1,10 +1,10 @@
 # Use official PostgreSQL image
-FROM postgres:13
+FROM postgres:14
 
 # Set environment variables
-ENV POSTGRES_DB=wakeb_db
-ENV POSTGRES_USER=wakeb_usr
-ENV POSTGRES_PASSWORD=wakeb_pw
+ENV POSTGRES_DB=
+ENV POSTGRES_USER=
+ENV POSTGRES_PASSWORD=
 
 # Copy initialization scripts
 COPY init-scripts/ /docker-entrypoint-initdb.d/

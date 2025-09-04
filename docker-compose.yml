@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:15
+    container_name: my-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: wakeb_db
+      POSTGRES_USER: wakeb_usr
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  tomcat:
+    image: tomcat:9.0
+    container_name: my-tomcat
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target/myapp.war:/usr/local/tomcat/webapps/myapp.war
+    environment:
+      POSTGRES_DB: wakeb_db
+      POSTGRES_USER: wakeb_usr
+      POSTGRES_PASSWORD: root
+      POSTGRES_HOST: postgres   # 👈 service name of postgres container
+      POSTGRES_PORT: 5432
+
+volumes:
+  pgdata:
